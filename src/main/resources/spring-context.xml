@@ -10,31 +10,6 @@
     <!-- load the properties file: application.properties -->
     <context:property-placeholder location="classpath:application.properties"/>
 
-    <bean id="mamma_mia"
-          class="com.agency04.sbss.pizza.service.Mamma_Mia">
-        <!-- injecting literal values -->
-        <property name="name" value="Mamma Mia"/>
-        <property name="address" value="Italian Street 99, Rome"/>
-        <property name="number" value="01 2345 678"/>
-    </bean>
-
-    <bean id="marzia"
-          class="com.agency04.sbss.pizza.service.Marzia">
-        <!-- injecting values from a properties file -->
-        <property name="name" value="${foo.name}"/>
-        <property name="address" value="${foo.address}"/>
-        <property name="number" value="${foo.number}"/>
-    </bean>
-
-    <bean id="firstDelivery"
-          class="com.agency04.sbss.pizza.service.PizzaDeliveryService">
-        <!-- constructor injection -->
-        <constructor-arg ref="mamma_mia"/>
-    </bean>
-
-    <bean id="secondDelivery"
-          class="com.agency04.sbss.pizza.service.PizzaDeliveryService">
-        <!-- setter injection -->
-        <property name="pizzeriaService" ref="marzia"/>
-    </bean>
+    <!-- add entry to enable component scanning -->
+    <context:component-scan base-package="com.agency04.sbss.pizza"/>
 </beans>
