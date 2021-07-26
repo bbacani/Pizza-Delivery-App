@@ -1,6 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- load the properties file: application.properties -->
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <bean id="mamma_mia"
+          class="com.agency04.sbss.pizza.service.Mamma_Mia">
+        <!-- injecting literal values -->
+        <property name="name" value="Mamma Mia"/>
+        <property name="address" value="Italian Street 99, Rome"/>
+        <property name="number" value="01 2345 678"/>
+    </bean>
+
+    <bean id="marzia"
+          class="com.agency04.sbss.pizza.service.Marzia">
+        <!-- injecting values from a properties file -->
+        <property name="name" value="${foo.name}"/>
+        <property name="address" value="${foo.address}"/>
+        <property name="number" value="${foo.number}"/>
+    </bean>
+
+    <bean id="firstDelivery"
+          class="com.agency04.sbss.pizza.service.PizzaDeliveryService">
+        <!-- constructor injection -->
+        <constructor-arg ref="mamma_mia"/>
+    </bean>
+
+    <bean id="secondDelivery"
+          class="com.agency04.sbss.pizza.service.PizzaDeliveryService">
+        <!-- setter injection -->
+        <property name="pizzeriaService" ref="marzia"/>
+    </bean>
 </beans>
