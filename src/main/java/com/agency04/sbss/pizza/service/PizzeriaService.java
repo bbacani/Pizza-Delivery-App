@@ -8,7 +8,5 @@ public interface PizzeriaService {
 
     String getAddress();
 
-    default String makePizza(Pizza pizza) {
-        return getName() + ": Making " + pizza.getName();
-    }
+    String makePizza(Pizza pizza);
 }

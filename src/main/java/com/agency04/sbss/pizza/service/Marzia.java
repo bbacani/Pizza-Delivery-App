@@ -1,5 +1,6 @@
 package com.agency04.sbss.pizza.service;
 
+import com.agency04.sbss.pizza.model.Pizza;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -39,5 +40,10 @@ public class Marzia implements PizzeriaService {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public String makePizza(Pizza pizza) {
+        return getName() + ": Making " + pizza.getName();
     }
 }

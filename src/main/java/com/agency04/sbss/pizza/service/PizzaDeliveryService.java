@@ -26,8 +26,7 @@ public class PizzaDeliveryService {
     }
 
     public void orderPizza(Pizza pizza) {
-        System.out.println("Ordering " + pizza.getName() + " from " + pizzeriaService.getName());
-        System.out.println(pizzeriaService.makePizza(pizza));
-        System.out.println("Order complete - delivering from " + pizzeriaService.getAddress() + "\n");
+        System.out.println("Name: " + pizza.getName());
+        System.out.println("Ingredients: " + pizza.getIngredients());
     }
 }

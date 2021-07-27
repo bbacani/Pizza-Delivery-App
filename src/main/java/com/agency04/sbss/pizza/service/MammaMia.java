@@ -1,10 +1,11 @@
 package com.agency04.sbss.pizza.service;
 
+import com.agency04.sbss.pizza.model.Pizza;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component(value = "mamma_mia")
-public class Mamma_Mia implements PizzeriaService {
+@Component
+public class MammaMia implements PizzeriaService {
 
     @Value("Mamma Mia")
     private String name;
@@ -39,5 +40,10 @@ public class Mamma_Mia implements PizzeriaService {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public String makePizza(Pizza pizza) {
+        return getName() + ": Making " + pizza.getName();
     }
 }
