@@ -1,0 +1,8 @@
+package com.agency04.sbss.pizza.model;
+
+public enum PizzaIngredient {
+    TOMATO_SAUCE, MOZZARELLA, OREGANO, PARMESAN,
+    ARTICHOKES, MUSHROOMS, OLIVES, GORGONZOLA,
+    SPICY_SALAMI, CHILLI_PEPPER, TUNA, CHERRY_TOMATOES,
+    EGGS, BACON, HAM, ONIONS
+}
