@@ -2,20 +2,19 @@ package com.agency04.sbss.pizza;
 
 import com.agency04.sbss.pizza.model.Margherita;
 import com.agency04.sbss.pizza.service.PizzaDeliveryService;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class PizzaApp {
 
 	public static void main(String[] args) {
 
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PizzaConfig.class);
-		System.out.println();
+		SpringApplication.run(PizzaApp.class, args);
 
-		PizzaDeliveryService pizzaDeliveryService = context.getBean("pizzaDeliveryService", PizzaDeliveryService.class);
+		PizzaDeliveryService pizzaDeliveryService = new PizzaDeliveryService();
 
 		System.out.println(pizzaDeliveryService.orderPizza(new Margherita()));
-
-		context.close();
 	}
 
 }

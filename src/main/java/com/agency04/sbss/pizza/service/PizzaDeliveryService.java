@@ -38,7 +38,8 @@ public class PizzaDeliveryService {
     }
 
     public String orderPizza(Pizza pizza) {
-        return "Name: " + pizza.getName() + "\n" +
+        return "\n" +
+                "Name: " + pizza.getName() + "\n" +
                 "Ingredients: " + pizza.getIngredients() + "\n";
     }
 }
