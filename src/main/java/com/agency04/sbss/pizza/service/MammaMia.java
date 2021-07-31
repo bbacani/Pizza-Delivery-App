@@ -1,20 +1,22 @@
 package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.Pizza;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MammaMia implements PizzeriaService {
 
-    @Value("Mamma Mia")
     private String name;
 
-    @Value("Italian Street 99, Rome")
     private String address;
 
-    @Value("01 2345 678")
     private String number;
+
+    public MammaMia() {
+        this.name = "Mamma Mia";
+        this.address = "Italian Street 99, Rome";
+        this.number = "01 2345 678";
+    }
 
     @Override
     public String getName() {
