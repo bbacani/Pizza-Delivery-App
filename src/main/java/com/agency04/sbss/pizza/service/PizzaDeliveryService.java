@@ -2,30 +2,35 @@ package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class PizzaDeliveryService {
 
     private PizzeriaService pizzeriaService;
 
     public PizzaDeliveryService() {
-        System.out.println("PizzaDeliveryService: inside no-arg constructor");
-    }
-
-    public PizzaDeliveryService(PizzeriaService pizzeriaService) {
-        System.out.println("PizzaDeliveryService: inside arg constructor");
-        this.pizzeriaService = pizzeriaService;
+        System.out.println(">> PizzaDeliveryService: inside no-arg constructor");
     }
 
     @Autowired
-    public void setPizzeriaService(@Qualifier("marzia") PizzeriaService pizzeriaService) {
-        System.out.println("PizzaDeliveryService: setter method - setPizzeriaService");
+    public PizzaDeliveryService(PizzeriaService pizzeriaService) {
+        System.out.println(">> PizzaDeliveryService: inside arg constructor");
         this.pizzeriaService = pizzeriaService;
     }
 
+    public void setPizzeriaService(PizzeriaService pizzeriaService) {
+        System.out.println(">> PizzaDeliveryService: setter method - setPizzeriaService");
+        this.pizzeriaService = pizzeriaService;
+    }
+
+    public PizzeriaService getPizzeriaService() {
+        return pizzeriaService;
+    }
+
     public String orderPizza(Pizza pizza) {
-        return "Name: " + pizza.getName() + "Ingredients: " + pizza.getIngredients();
+        return "\n" +
+                "Name: " + pizza.getName() + "\n" +
+                "Ingredients: " + pizza.getIngredients() + "\n";
     }
 }

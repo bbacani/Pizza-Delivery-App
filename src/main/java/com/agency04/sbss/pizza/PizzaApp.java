@@ -1,21 +1,27 @@
 package com.agency04.sbss.pizza;
 
+import com.agency04.sbss.pizza.model.Capricciosa;
 import com.agency04.sbss.pizza.model.Margherita;
 import com.agency04.sbss.pizza.service.PizzaDeliveryService;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.agency04.sbss.pizza.service.PizzeriaService;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
+@SpringBootApplication
 public class PizzaApp {
 
 	public static void main(String[] args) {
 
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
-		System.out.println();
+		ApplicationContext applicationContext = SpringApplication.run(PizzaApp.class, args);
 
-		PizzaDeliveryService pizzaDeliveryService = context.getBean("pizzaDeliveryService", PizzaDeliveryService.class);
+		PizzaDeliveryService pizzaDeliveryService = applicationContext.getBean(PizzaDeliveryService.class);
 
 		System.out.println(pizzaDeliveryService.orderPizza(new Margherita()));
 
-		context.close();
+		PizzeriaService pizzeriaService = applicationContext.getBean(PizzeriaService.class);
+
+		System.out.println(pizzeriaService.makePizza(new Capricciosa()));
 	}
 
 }
