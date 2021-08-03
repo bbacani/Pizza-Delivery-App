@@ -10,17 +10,14 @@ public class PizzaDeliveryService {
     private PizzeriaService pizzeriaService;
 
     public PizzaDeliveryService() {
-        System.out.println(">> PizzaDeliveryService: inside no-arg constructor");
     }
 
     @Autowired
     public PizzaDeliveryService(PizzeriaService pizzeriaService) {
-        System.out.println(">> PizzaDeliveryService: inside arg constructor");
         this.pizzeriaService = pizzeriaService;
     }
 
     public void setPizzeriaService(PizzeriaService pizzeriaService) {
-        System.out.println(">> PizzaDeliveryService: setter method - setPizzeriaService");
         this.pizzeriaService = pizzeriaService;
     }
 
