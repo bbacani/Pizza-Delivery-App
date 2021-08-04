@@ -1,13 +1,25 @@
 package com.agency04.sbss.pizza.service;
 
+import com.agency04.sbss.pizza.model.Order;
 import com.agency04.sbss.pizza.model.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PizzaDeliveryService {
 
+    private List<Order> orders;
+
     private PizzeriaService pizzeriaService;
+
+    @PostConstruct
+    public void loadData() {
+        orders = new ArrayList<>();
+    }
 
     public PizzaDeliveryService() {
     }
@@ -23,6 +35,10 @@ public class PizzaDeliveryService {
 
     public PizzeriaService getPizzeriaService() {
         return pizzeriaService;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 
     public String orderPizza(Pizza pizza) {
