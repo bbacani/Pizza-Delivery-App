@@ -1,12 +1,14 @@
 package com.agency04.sbss.pizza.service;
 
+import com.agency04.sbss.pizza.model.Capricciosa;
+import com.agency04.sbss.pizza.model.Margherita;
 import com.agency04.sbss.pizza.model.Pizza;
+import com.agency04.sbss.pizza.model.Size;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+import java.util.List;
 
 @Primary
 @Service
@@ -21,18 +23,10 @@ public class Marzia implements PizzeriaService {
     @Value("${foo.number}")
     private String number;
 
-    private String motto;
+    private List<Pizza> pizzas = List.of(new Margherita(), new Capricciosa());
 
-    @PostConstruct
-    public void doMyStartup() {
-        System.out.println(">> Marzia: inside of doMyStartup()");
-        this.motto = "Best pizza in Italy!";
-    }
-
-    @PreDestroy
-    public void doMyCleanup() {
-        System.out.println(">> Marzia: inside of doMyCleanup()");
-    }
+    @Value("${foo.sizes}")
+    private List<Size> sizes;
 
     @Override
     public String getName() {
@@ -52,12 +46,31 @@ public class Marzia implements PizzeriaService {
         this.address = address;
     }
 
+    @Override
     public String getNumber() {
         return number;
     }
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public List<Pizza> getPizzas() {
+        return pizzas;
+    }
+
+    public void setPizzas(List<Pizza> pizzas) {
+        this.pizzas = pizzas;
+    }
+
+    @Override
+    public List<Size> getSizes() {
+        return sizes;
+    }
+
+    public void setSizes(List<Size> sizes) {
+        this.sizes = sizes;
     }
 
     @Override

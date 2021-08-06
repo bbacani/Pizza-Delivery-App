@@ -1,7 +1,9 @@
 package com.agency04.sbss.pizza.service;
 
-import com.agency04.sbss.pizza.model.Pizza;
+import com.agency04.sbss.pizza.model.*;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MammaMia implements PizzeriaService {
@@ -12,10 +14,16 @@ public class MammaMia implements PizzeriaService {
 
     private String number;
 
+    private List<Pizza> pizzas;
+
+    private List<Size> sizes;
+
     public MammaMia() {
         this.name = "Mamma Mia";
         this.address = "Italian Street 99, Rome";
         this.number = "01 2345 678";
+        this.pizzas = List.of(new Capricciosa(), new Margherita(), new Diavola(), new Tonno());
+        this.sizes = List.of(Size.SMALL, Size.MEDIUM, Size.LARGE, Size.JUMBO);
     }
 
     @Override
@@ -36,12 +44,31 @@ public class MammaMia implements PizzeriaService {
         this.address = address;
     }
 
+    @Override
     public String getNumber() {
         return number;
     }
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public List<Pizza> getPizzas() {
+        return pizzas;
+    }
+
+    public void setPizzas(List<Pizza> pizzas) {
+        this.pizzas = pizzas;
+    }
+
+    @Override
+    public List<Size> getSizes() {
+        return sizes;
+    }
+
+    public void setSizes(List<Size> sizes) {
+        this.sizes = sizes;
     }
 
     @Override
