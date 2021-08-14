@@ -1,4 +1,4 @@
-package com.agency04.sbss.pizza.rest;
+package com.agency04.sbss.pizza.api;
 
 public class PizzaException extends RuntimeException {
 
@@ -13,5 +13,4 @@ public class PizzaException extends RuntimeException {
 	public PizzaException(Throwable cause) {
 		super(cause);
 	}
-	
 }

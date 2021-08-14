@@ -1,8 +1,12 @@
-package com.agency04.sbss.pizza.model;
+package com.agency04.sbss.pizza.api;
+
+import com.agency04.sbss.pizza.model.Pizza;
+import com.agency04.sbss.pizza.model.Size;
 
 import java.util.List;
 
 public class MenuResponse {
+
     private List<Size> sizes;
 
     private List<Pizza> pizzas;

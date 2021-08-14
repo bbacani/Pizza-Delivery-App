@@ -1,6 +1,7 @@
-package com.agency04.sbss.pizza.model;
+package com.agency04.sbss.pizza.api;
 
 public class PizzeriaResponse {
+
     private String name;
 
     private String address;

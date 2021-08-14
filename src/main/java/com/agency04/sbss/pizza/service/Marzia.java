@@ -1,7 +1,7 @@
 package com.agency04.sbss.pizza.service;
 
-import com.agency04.sbss.pizza.model.Capricciosa;
-import com.agency04.sbss.pizza.model.Margherita;
+import com.agency04.sbss.pizza.model.pizzas.Capricciosa;
+import com.agency04.sbss.pizza.model.pizzas.Margherita;
 import com.agency04.sbss.pizza.model.Pizza;
 import com.agency04.sbss.pizza.model.Size;
 import org.springframework.beans.factory.annotation.Value;
