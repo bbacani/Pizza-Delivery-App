@@ -1,4 +1,4 @@
-package com.agency04.sbss.pizza.rest;
+package com.agency04.sbss.pizza.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +29,4 @@ public class PizzaRestExceptionHandler {
 
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
-	
 }

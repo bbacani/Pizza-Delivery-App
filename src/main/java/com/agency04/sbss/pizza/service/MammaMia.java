@@ -1,6 +1,7 @@
 package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.*;
+import com.agency04.sbss.pizza.model.pizzas.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class MammaMia implements PizzeriaService {
         this.address = "Italian Street 99, Rome";
         this.number = "01 2345 678";
         this.pizzas = List.of(new Capricciosa(), new Margherita(), new Diavola(), new Tonno());
-        this.sizes = List.of(Size.SMALL, Size.MEDIUM, Size.LARGE, Size.JUMBO);
+        this.sizes = List.of(Size.SMALL, Size.MEDIUM, Size.LARGE);
     }
 
     @Override

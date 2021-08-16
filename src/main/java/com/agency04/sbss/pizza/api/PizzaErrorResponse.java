@@ -1,4 +1,4 @@
-package com.agency04.sbss.pizza.rest;
+package com.agency04.sbss.pizza.api;
 
 public class PizzaErrorResponse {
 
@@ -37,6 +37,5 @@ public class PizzaErrorResponse {
 
 	public void setTimeStamp(long timeStamp) {
 		this.timeStamp = timeStamp;
-	}	
-	
+	}
 }

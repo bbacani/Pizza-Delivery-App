@@ -1,23 +1,34 @@
 package com.agency04.sbss.pizza.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+import java.util.List;
+import java.util.Objects;
+
+@Entity
 public class Customer {
 
+    @Id
     private String username;
 
-    private String name;
+    @JsonManagedReference
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "username")
+    private CustomerDetails customerDetails;
 
-    private String surname;
-
-    private int age;
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer")
+    private List<Delivery> deliveries;
 
     public Customer() {
     }
 
-    public Customer(String username, String name, String surname, int age) {
+    public Customer(String username, CustomerDetails customerDetails, List<Delivery> deliveries) {
         this.username = username;
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
+        this.customerDetails = customerDetails;
+        this.deliveries = deliveries;
     }
 
     public String getUsername() {
@@ -28,27 +39,38 @@ public class Customer {
         this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public CustomerDetails getCustomerDetails() {
+        return customerDetails;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerDetails(CustomerDetails customerDetails) {
+        this.customerDetails = customerDetails;
+        this.customerDetails.setCustomer(this);
     }
 
-    public String getSurname() {
-        return surname;
+    public List<Delivery> getDeliveries() {
+        return deliveries;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setDeliveries(List<Delivery> deliveries) {
+        this.deliveries = deliveries;
     }
 
-    public int getAge() {
-        return age;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Customer customer = (Customer) o;
+
+        if (!Objects.equals(username, customer.username)) return false;
+        return Objects.equals(customerDetails, customer.customerDetails);
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    @Override
+    public int hashCode() {
+        int result = username != null ? username.hashCode() : 0;
+        result = 31 * result + (customerDetails != null ? customerDetails.hashCode() : 0);
+        return result;
     }
 }
