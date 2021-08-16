@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Delivery {
@@ -47,5 +48,26 @@ public class Delivery {
     public void addPizzaOrder(PizzaOrder pizzaOrder) {
         this.pizzaOrders.add(pizzaOrder);
         pizzaOrder.setDelivery(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Delivery delivery = (Delivery) o;
+
+        if (!Objects.equals(customer, delivery.customer)) return false;
+        if (!Objects.equals(submissionDate, delivery.submissionDate))
+            return false;
+        return Objects.equals(pizzaOrders, delivery.pizzaOrders);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = customer != null ? customer.hashCode() : 0;
+        result = 31 * result + (submissionDate != null ? submissionDate.hashCode() : 0);
+        result = 31 * result + (pizzaOrders != null ? pizzaOrders.hashCode() : 0);
+        return result;
     }
 }

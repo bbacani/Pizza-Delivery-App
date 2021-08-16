@@ -2,7 +2,6 @@ package com.agency04.sbss.pizza;
 
 import com.agency04.sbss.pizza.model.Customer;
 import com.agency04.sbss.pizza.model.CustomerDetails;
-import com.agency04.sbss.pizza.model.Pizza;
 import com.agency04.sbss.pizza.service.PizzaDeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -24,10 +23,8 @@ public class AppStartupRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        for (Pizza pizza : pizzaDeliveryService.getPizzeriaService().getPizzas()) {
-            pizza.setIngredients(pizza.getIngredients());
-            pizzaDeliveryService.getPizzaRepository().save(pizza);
-        }
+
+        pizzaDeliveryService.setPizzas();
 
         List<Customer> customers = new ArrayList<>();
 
@@ -58,9 +55,6 @@ public class AppStartupRunner implements ApplicationRunner {
         customers.add(customer1);
         customers.add(customer2);
 
-        pizzaDeliveryService.getCustomerDetailsRepository().save(customer1.getCustomerDetails());
-        pizzaDeliveryService.getCustomerDetailsRepository().save(customer2.getCustomerDetails());
-
-        pizzaDeliveryService.getCustomerRepository().saveAll(customers);
+        pizzaDeliveryService.saveCustomers(customers);
     }
 }
